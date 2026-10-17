@@ -1,0 +1,9 @@
+[tools]
+node = "24.16.0"
+
+[env]
+PORT = "3000"
+
+[tasks.start]
+description = "Start the web server"
+run = "npm start"
