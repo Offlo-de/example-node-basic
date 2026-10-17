@@ -3,7 +3,21 @@ node = "24.16.0"
 
 [env]
 PORT = "3000"
+DATABASE_URL = { default = "postgresql://demo:demo@localhost:5432/demo" }
+REDIS_URL = { default = "redis://localhost:6379" }
 
 [tasks.start]
 description = "Start the web server"
 run = "npm start"
+
+[tasks.worker]
+description = "Start the request queue worker"
+run = "npm run worker"
+
+[tasks.cleanup]
+description = "Calculate and save daily request totals, then exit"
+run = "npm run cleanup"
+
+[tasks."db:setup"]
+description = "Create the example database tables"
+run = "npm run db:setup"
