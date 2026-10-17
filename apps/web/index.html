@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Offlo.de static + API demo</title>
+  </head>
+  <body>
+    <h1>Offlo.de static + API demo</h1>
+    <p>This is a static HTML file. The message below comes from the API.</p>
+    <p id="message" role="status">Loading…</p>
+    <button id="reload" type="button">Call API</button>
+    <script>
+      const message = document.querySelector("#message");
+      const reload = document.querySelector("#reload");
+
+      async function callApi() {
+        reload.disabled = true;
+        message.textContent = "Loading…";
+        try {
+          const response = await fetch("/api/");
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          message.textContent = await response.text();
+        } catch (error) {
+          message.textContent = `Could not load the API: ${error.message}`;
+        } finally {
+          reload.disabled = false;
+        }
+      }
+
+      reload.addEventListener("click", callApi);
+      callApi();
+    </script>
+  </body>
+</html>

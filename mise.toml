@@ -5,5 +5,5 @@ node = "24.16.0"
 PORT = "3000"
 
 [tasks.start]
-description = "Start the web server"
+description = "Start the API server"
 run = "npm start"

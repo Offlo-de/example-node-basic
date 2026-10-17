@@ -7,6 +7,12 @@ if (!Number.isInteger(port) || port < 1 || port > 65535) {
 }
 
 const server = createServer((request, response) => {
+  if (request.url?.split('?')[0] !== '/api/') {
+    response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    response.end('Not found\n');
+    return;
+  }
+
   response.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
   response.end('Hello from Offlo.de!\n');
 });
