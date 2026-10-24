@@ -1,7 +1,6 @@
 # Simple Node.js web server
 
 A dependency-free HTTP server. Built as an example for Offlo.de managed linux runtime.
-
 With [mise](https://mise.jdx.dev/getting-started.html) installed, run:
 
 ```sh
